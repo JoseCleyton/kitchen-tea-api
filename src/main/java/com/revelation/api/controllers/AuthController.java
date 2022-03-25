@@ -33,7 +33,7 @@ public class AuthController {
 
     @PostMapping("/create")
     public ResponseEntity<UserModel> authenticate(@RequestBody @Valid UserDto userDto) {
-        var userModel = new UserModel();
+        UserModel userModel = new UserModel();
         BeanUtils.copyProperties(userDto, userModel);
         return ResponseEntity.ok(this.userService.save(userModel));
     }

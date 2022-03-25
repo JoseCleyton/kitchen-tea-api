@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/gift")
@@ -23,9 +24,9 @@ public class GiftController {
 
     @PostMapping
     public ResponseEntity<GiftModel> save(@RequestBody @Valid GiftDto giftDto) {
-        var giftModel = new GiftModel();
-        var guestModel = new GuestModel();
-        var giftSuggestionModel = new GiftSuggestionModel();
+        GiftModel giftModel = new GiftModel();
+        GuestModel guestModel = new GuestModel();
+        GiftSuggestionModel giftSuggestionModel = new GiftSuggestionModel();
 
         BeanUtils.copyProperties(giftDto, giftModel);
         BeanUtils.copyProperties(giftDto.getGuest(), guestModel);
@@ -43,7 +44,7 @@ public class GiftController {
 
     @GetMapping("/guest")
     public ResponseEntity<GiftModel> findByGuestName(@RequestParam String guestName) {
-        var optionalGuest = this.giftService.findByGuestName(guestName);
+        Optional<GiftModel> optionalGuest = this.giftService.findByGuestName(guestName);
         if (optionalGuest.isEmpty()) {
             return ResponseEntity.ok().build();
         }

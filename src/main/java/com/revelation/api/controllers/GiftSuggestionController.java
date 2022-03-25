@@ -23,7 +23,7 @@ public class GiftSuggestionController {
 
     @PostMapping
     public ResponseEntity<GiftSuggestionModel> save(@RequestBody @Valid GiftSuggestionDto giftSuggestionDto) {
-        var giftSuggestionModel = new GiftSuggestionModel();
+        GiftSuggestionModel giftSuggestionModel = new GiftSuggestionModel();
         BeanUtils.copyProperties(giftSuggestionDto, giftSuggestionModel);
         return ResponseEntity.ok(this.giftSuggestionRepository.save(giftSuggestionModel));
     }

@@ -25,7 +25,7 @@ public class RevelationController {
 
     @PostMapping
     public ResponseEntity<RevelationModel> save(@RequestBody @Valid RevelationDto revelationDto) {
-        var revelationModel = new RevelationModel();
+        RevelationModel revelationModel = new RevelationModel();
         BeanUtils.copyProperties(revelationDto, revelationModel);
         return ResponseEntity.ok(this.revelationService.save(revelationModel));
     }
