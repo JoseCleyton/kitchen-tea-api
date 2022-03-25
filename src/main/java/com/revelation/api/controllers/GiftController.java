@@ -45,7 +45,7 @@ public class GiftController {
     @GetMapping("/guest")
     public ResponseEntity<GiftModel> findByGuestName(@RequestParam String guestName) {
         Optional<GiftModel> optionalGuest = this.giftService.findByGuestName(guestName);
-        if (optionalGuest.isEmpty()) {
+        if (!optionalGuest.isPresent()) {
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.ok(optionalGuest.get());

@@ -33,7 +33,7 @@ public class RevelationController {
     @GetMapping("/key")
     public ResponseEntity<RevelationModel> findByKey(@RequestParam String key) {
         Optional<RevelationModel> optionalRevelationModel = this.revelationService.findByKey(key);
-        if (optionalRevelationModel.isEmpty()) {
+        if (!optionalRevelationModel.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         if (!this.revelationService.isValid(optionalRevelationModel.get())) {
