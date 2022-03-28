@@ -48,4 +48,12 @@ public class RevelationService {
         }
         return false;
     }
+
+    public void delete(Long id) {
+        this.revelationRepository.deleteById(id);
+    }
+
+    public RevelationModel update(RevelationModel revelationModel) {
+        return this.revelationRepository.save(revelationModel);
+    }
 }

@@ -27,9 +27,9 @@ public class RevelationModel implements Serializable {
     private int quantityGuest;
     private LocalDateTime expiredIn;
     @JsonIgnore
-    @OneToMany(mappedBy = "revelation")
+    @OneToMany(mappedBy = "revelation", cascade = CascadeType.ALL)
     private List<GiftSuggestionModel> giftSuggestion;
     @JsonIgnore
-    @OneToMany(mappedBy = "revelation")
+    @OneToMany(mappedBy = "revelation", cascade = CascadeType.ALL)
     private List<GiftModel> gift;
 }

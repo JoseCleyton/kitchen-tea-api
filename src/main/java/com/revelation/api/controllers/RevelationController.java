@@ -48,4 +48,14 @@ public class RevelationController {
         return ResponseEntity.ok(this.revelationService.findAll());
     }
 
+    @PutMapping
+    public ResponseEntity<RevelationModel> update(@RequestBody RevelationModel revelationModel) {
+        return ResponseEntity.ok(this.revelationService.update(revelationModel));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable(name = "id") Long id) {
+        this.revelationService.delete(id);
+        return ResponseEntity.ok(true);
+    }
 }
